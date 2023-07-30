@@ -1,0 +1,18 @@
+def process_string(s):
+    stack = []
+    for char in s:
+        if char == '#':
+            if stack:
+                stack.pop()
+        else:
+            stack.append(char)
+    return ''.join(stack)
+
+def are_equal_with_backspace(s, t):
+    return process_string(s) == process_string(t)
+
+# Test the function
+s = "ab#c"
+t = "ad#c"
+output = are_equal_with_backspace(s, t)
+print(output)  # Output: True

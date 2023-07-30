@@ -1,0 +1,29 @@
+def is_strobogrammatic(num):
+    # Create a dictionary to store the strobogrammatic digit pairs
+    strobogrammatic_dict = {
+        '0': '0',
+        '1': '1',
+        '6': '9',
+        '8': '8',
+        '9': '6'
+    }
+    
+    # Initialize pointers for the left and right ends of the number
+    left, right = 0, len(num) - 1
+    
+    # Iterate through the number from both ends
+    while left <= right:
+        # Check if the digits at left and right pointers form a strobogrammatic pair
+        if num[left] not in strobogrammatic_dict or num[right] != strobogrammatic_dict[num[left]]:
+            return False
+        left += 1
+        right -= 1
+    
+    # All digits have passed the strobogrammatic check, so return True
+    return True
+
+# Test cases
+print(is_strobogrammatic("69"))  # Output: True
+print(is_strobogrammatic("88"))  # Output: True
+print(is_strobogrammatic("818")) # Output: True
+print(is_strobogrammatic("123")) # Output: False

@@ -1,0 +1,15 @@
+def can_shift(s, goal):
+    if len(s) != len(goal):
+        return False
+    
+    # Concatenate the original string with itself
+    s_concat = s + s
+    
+    # Check if the target string is a substring of the concatenated string
+    return goal in s_concat
+
+# Test the function
+s = "abcde"
+goal = "cdeab"
+output = can_shift(s, goal)
+print(output)  # Output: True

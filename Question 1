@@ -1,0 +1,30 @@
+def are_isomorphic(s, t):
+    if len(s) != len(t):
+        return False
+
+    mapping = {}
+    mapped_chars = set()
+
+    for i in range(len(s)):
+        char_s = s[i]
+        char_t = t[i]
+
+        # If char_s is already mapped to a character and it doesn't map to char_t, return False
+        if char_s in mapping and mapping[char_s] != char_t:
+            return False
+
+        # If char_s is not mapped but char_t is already mapped, return False
+        if char_s not in mapping and char_t in mapped_chars:
+            return False
+
+        # Update the mapping
+        mapping[char_s] = char_t
+        mapped_chars.add(char_t)
+
+    return True
+
+# Test example 1
+s1 = "egg"
+t1 = "add"
+print(are_isomorphic(s1, t1))  # Output: True
+
